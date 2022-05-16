@@ -1,0 +1,95 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Assignment 4 \\ NCERT Class 11 Chapter 16 Miscellaneous Exercise Question 2} 
+\author{Rishi Manoj - CS21BTECH11045}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+\section{Question}
+\begin{frame}{Question}
+4 cards are drawn from a well-shuffled deck of 52 cards. What is the probability of obtaining 3 diamonds and one spade?
+\end{frame}
+
+
+\section{Solution}
+\begin{frame}{Solution}
+Let $X$ and $Y$ be the events defined as follows,\\
+	$X$ : Picking three diamond cards \\
+	$Y$ : Picking a spade card
+\end{frame}
+
+\section{For $X$}
+\begin{frame}{For $X$}
+Number of possible ways of choosing three diamonds from a well-shuffled deck of 52 cards is given by,
+   \begin{align}
+        n(X) &= {13 \choose 3}
+   \end{align}
+\end{frame}
+ 
+\section{For $Y$}
+\begin{frame}{For $X$}
+Number of possible ways of choosing one spade from a well-shuffled deck of 52 cards is given by,
+   \begin{align}
+        n(Y) &= {13 \choose 1}
+   \end{align}
+\end{frame}   
+
+\section{Sample Space}
+\begin{frame}{Sample Space}
+Number of possible ways of choosing four cards from a well-shuffled deck of 52 cards is given by,
+   \begin{align}
+        n(S) &= {52 \choose 4}
+   \end{align}
+\end{frame}  
+
+\section{Solving}
+\begin{frame}{Solving}
+Number of possible ways of choosing three diamonds and one spade from a well-shuffled deck of 52 cards is given by,
+   \begin{align}
+        n(X Y) &= {13 \choose 3} \times {13 \choose 1}
+   \end{align}
+Probability of getting 3 diamonds and 1 spade is given by,
+	\begin{align}
+	\pr{X Y} &= \frac{n(X Y)}{n(S)} \\
+	&= \frac{{13 \choose 3} \times {13 \choose 1}}{{52 \choose 4}} \\
+	&= \frac{3178}{270725} \\
+	&= 0.0137
+	\end{align}
+Therefore, the probability of getting 3 diamonds and 1 spade is 0.0137.
+\end{frame}
+
+\end{document}
