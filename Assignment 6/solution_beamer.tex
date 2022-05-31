@@ -1,0 +1,148 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 %%
+\usepackage{color}                                            %%
+\usepackage{array}                                            %%
+\usepackage{longtable}                                        %%
+\usepackage{calc}                                             %%
+\usepackage{multirow}                                         %%
+\usepackage{hhline}                                           %%
+\usepackage{ifthen}                                           %%
+
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Assignment 6 \\ Papoullis Textbook Chapter 5 Example 33} 
+\author{Rishi Manoj - CS21BTECH11045}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+\section{Question}
+\begin{frame}{Question}
+A person writes $n$ letters and addresses $n$ envelopes. Then one letter is randomly placed into each envelope. What is the probability that at least one letter will reach its correct destination?
+\end{frame}
+
+
+\section{Solution}
+\begin{frame}{Solution}
+Let $X_k$ represents the event that there are exactly $k$ coincidences among the $n$ envelopes. All the events corresponding to the values of $k$ starting from 0 to $n$ are mutually exclusive and exhaustive. So, by theorem of total probability,
+	\begin{align}
+	       & p_n(0)+p_n(1)+p_n(2)+\cdots+p_n(n) = 1 &\\
+	       & p_n(k) \triangleq P(X_k) &
+	\end{align}
+Let $P$ be the probability of generating $k$ coincidences with the chosen $k$ letters and $Pr$ be the required probability that atleast one letter reaches its correct destination.
+\end{frame}
+
+
+\section{Probability $P$}
+\begin{frame}{Probability $P$}
+Number of ways of drawing $k$ letters from a group of $n$ is ${n \choose k}$.
+	Probability of generating $k$ coincidences with the chosen $k$ letters is,
+	\begin{align}
+	        P &= \brak{\frac{1}{n}}\brak{\frac{1}{n-1}}\cdots\brak{\frac{1}{n-k+1}} 
+	\end{align}
+\end{frame}
+
+
+\section{Probability $p_n(k)$}
+\begin{frame}{Probability $p_n(k)$}
+Probability of no coincidences with remaining $n-k$ letters is given by $p_{n-k}(0)$.
+	So,
+	\begin{align}
+	 p_n(k) &= {n \choose k}\brak{\frac{1}{n(n-1)\cdots(n-k+1)}}p_{n-k}(0) \\
+	 &= \frac{p_{n-k}(0)}{k\!}
+	\end{align}
+\end{frame}
+
+
+\section{Solving}
+\begin{frame}{Solving}
+We know that,
+	\begin{align}
+	           p_n(n) &= \frac{1}{n!}
+	\end{align}
+	Substituiting eq.(5) in eq.(1) along with the above one gives,
+	\begin{align}
+	 & p_n(0)+\frac{p_{n-1}(0)}{1!}+\cdots+\frac{p_{1}(0)}{(n-1)!}+\frac{1}{n!} = 1 &
+	\end{align}
+	From this we can get the following,
+	\begin{align}
+	          p_1(0) &= 0 \\
+	          p_2(0) &= \frac{1}{2} \\
+	          p_3(0) &= \frac{1}{6}
+	\end{align}
+\end{frame}
+
+
+\section{Moment Generating Function}
+\begin{frame}{Moment Generating Function}
+We define the moment generating function in the following way to get an explicit expression for $p_n(0)$,
+	\begin{align}
+	         \phi(z) &= \Sigma^\infty_{n=0}p_n(0)z^n \\
+	         e^z\phi(z) &= \brak{\Sigma^\infty_{k=0}\frac{z^k}{k!}}\brak{\Sigma^\infty_{n=0}p_n(0)z^n} \\
+	         &= 1+z+z^2+\cdots+z^n+\cdots \\
+	         &= \frac{1}{1-z}
+	\end{align}
+\end{frame}
+
+
+\section{Solving for $p_n(0)$}
+\begin{frame}{Solving for $p_n(0)$}
+Using the above equations, we get,
+	\begin{align}
+	\phi(z) &= \frac{e^{-z}}{1-z} \\
+	        &= \Sigma^\infty_{n=0}\brak{\Sigma^n_{k=0}\frac{(-1)^k}{k!}}z^n \\
+	p_n(0) &= \Sigma^n_{k=0}\frac{(-1)^k}{k!} \rightarrow \frac{1}{e} \\
+	       &= 0.378
+	\end{align} 
+	Using eq.(5) we get,
+	\begin{align}
+	         p_n(k) &= \frac{1}{k!}\Sigma^{n-k}_{m=0}\frac{(-1)^m}{m!}
+	\end{align}
+\end{frame}
+
+
+\section{Probability $Pr$}
+\begin{frame}{Probability $Pr$}
+The required probability is given by,
+	\begin{align}
+	   Pr &= 1-p_n(0) \\
+	   &= 1-\Sigma^n_{k=0}\frac{(-1)^k}{k!} \rightarrow 0.632	
+	\end{align}
+\end{frame}
+
+\end{document}
