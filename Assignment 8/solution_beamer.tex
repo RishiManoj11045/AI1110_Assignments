@@ -1,0 +1,111 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Welcome to Overleaf --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you open the
+% 'Share' menu, you can invite other users to edit at the same
+% time. See www.overleaf.com/learn for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+\def\inputGnumericTable{}
+
+\usepackage[latin1]{inputenc}                                 %%
+\usepackage{color}                                            %%
+\usepackage{array}                                            %%
+\usepackage{longtable}                                        %%
+\usepackage{calc}                                             %%
+\usepackage{multirow}                                         %%
+\usepackage{hhline}                                           %%
+\usepackage{ifthen}                                           %%
+
+
+% Theme choice:
+\usetheme{CambridgeUS}
+
+% Title page details: 
+\title{Assignment 8 \\ Papoullis Textbook Chapter 6 Ex 6.70} 
+\author{Rishi Manoj - CS21BTECH11045}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+
+\begin{document}
+
+% Title page frame
+\begin{frame}
+    \titlepage 
+\end{frame}
+
+% Remove logo from the next slides
+\logo{}
+
+
+% Outline frame
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+
+\section{Question}
+\begin{frame}{Question}
+The random variables $x$ and $y$ are $N(3,4,1,4,0.5)$. Find $f(y|x)$ and $f(x|y)$.
+\end{frame}
+
+
+\section{Solution}
+\begin{frame}{Solution}
+Given $N(3,4,1,4,0.5)$.
+	\begin{align}
+	       \mu_1 &= 3 \\
+	       \mu_2 &= 4 \\
+	       \sigma_1^2 &= 1 \\ 
+	       \sigma_2^2 &= 1 \\ 	       
+	       r &= 0.5
+	\end{align}
+\end{frame}
+
+
+\section{$f(y|x)$}
+\begin{frame}{$f(y|x)$}
+$f(y|x)$ is given by,
+	\begin{align}
+	        f(y|x) &= \frac{1}{\sigma _2\sqrt{2\pi(1-r^2)}}exp\brak{\frac{-((y-\eta_2)-r\sigma_2(x-\eta_1)/\sigma_1)^2}{2\sigma_2^2(1-r^2)}}
+	\end{align}
+\end{frame}
+
+
+
+\section{Solving for $f(y|x)$}
+\begin{frame}{Solving for $f(y|x)$}
+Substituiting the corresponding values and simplifying gives,
+	\begin{align}
+	        f(y|x) &= \frac{1}{2\sqrt{2\pi(1-(0.5)^2)}}exp\brak{\frac{-((y-4)-(0.5)(2)(x-3)/1)^2}{2(4)(1-(0.5)^2)}} \\
+	        f(y|x) &= \frac{1}{\sqrt{6\pi}}exp\brak{\frac{-(y-x-1)^2}{6}}
+	\end{align}
+\end{frame}
+
+
+\section{$f(x|y)$}
+\begin{frame}{$f(x|y)$}
+$f(x|y)$ is given by,
+	\begin{align}
+	        f(x|y) &= \frac{1}{\sigma _1\sqrt{2\pi(1-r^2)}}exp\brak{\frac{-((x-\eta_1)-r\sigma_1(y-\eta_2)/\sigma_2)^2}{2\sigma_1^2(1-r^2)}}
+	\end{align}
+\end{frame}
+
+
+\section{Solving for $f(x|y)$}
+\begin{frame}{Solving for $f(x|y)$}
+Substituiting the corresponding values and simplifying gives,
+	\begin{align}
+	        f(y|x) &= \frac{1}{1\sqrt{2\pi(1-(0.5)^2)}}exp\brak{\frac{-((x-3)-(0.5)(1)(y-4)/1)^2}{2(1)(1-(0.5)^2)}} \\
+	        f(y|x) &= \frac{\sqrt{2}}{\sqrt{3\pi}}exp\brak{\frac{-(4y-x-13)^2}{24}}
+	\end{align}
+\end{frame}
+
+\end{document}
